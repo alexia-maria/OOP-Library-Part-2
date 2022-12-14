@@ -9,13 +9,13 @@
 class Carte : public Produs {
     std::string gen;
 public :
-    Carte(const std::string &denumire, int pret, const std::string &gen);
+    Carte(const std::string &denumire, int pret, std::string gen);
 
     //Carte(const std::string &den, int p, const std::string &g);
 
     const std::string &getGen() const;
 
-    void setGen(const std::string &gen);
+    [[maybe_unused]] void setGen(const std::string &gen);
 
     void prezentareaProdusului() override;
 

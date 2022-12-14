@@ -34,7 +34,7 @@ void Produs::prezentareaProdusului() {
     std::cout<<"Pretul produsului este "<<pret<<" \n";
 }
 
-void Produs::reducere() const {};
+void Produs::reducere() const {}
 
 /*void Produs::anuntReducere() const {
     std::cout<<reducere()<<" cu denumirea "<<getDenumire()<<"este la reducere in urmatoarele zile!\n";

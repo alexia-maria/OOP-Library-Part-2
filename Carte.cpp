@@ -2,8 +2,9 @@
 
 #include<iostream>
 #include<string>
+#include <utility>
 
-Carte::Carte(const std::string &denumire, int pret, const std::string &gen) : Produs(denumire, pret), gen(gen) {}
+Carte::Carte(const std::string &denumire, int pret, std::string gen) : Produs(denumire, pret), gen(std::move(gen)) {}
 
 /*Carte::Carte(const std::string &den, int p, const std::string &g) : Produs(den, p) {
     this->gen = g;
@@ -13,8 +14,8 @@ const std::string &Carte::getGen() const {
     return gen;
 }
 
-void Carte::setGen(const std::string &gen) {
-    Carte::gen = gen;
+[[maybe_unused]] void Carte::setGen(const std::string &gen_) {
+    Carte::gen = gen_;
 }
 
 void Carte::prezentareaProdusului() {

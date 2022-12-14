@@ -9,7 +9,8 @@ using namespace std;
 #include "Start.h"
 #include "NuAvemAceastaCarte.h"
 #include "NuAvemAcestCaiet.h"
-#include "AiciAvemOCarte.h"
+#include "NuAFostGasit.h"
+#include "DepasesteLimitele.h"
 #include "IOStream.h"
 
 void Start::begin() {
@@ -61,6 +62,7 @@ void Start::begin() {
             Carte d = b;
             c.prezentareaProdusului();
             d.prezentareaProdusului();
+            [[fallthrough]];
         }
 
         case 5 : {
@@ -111,14 +113,15 @@ void Start::begin() {
                     cout<<"Nu ati introdus o tasta corespunzatoare\n";
                 }
             }
+
             cout<<"\n Afisarea produselor de diferite tipuri : \n\n";
             Magazin::afiseazaProduse();
-
 
             cout<<"\n Utilizarea dynamic_cast : \n\n";
             for(auto &x : Magazin::gasesteToateCartile()) {
                 x->prezentareaProdusului();
             }
+
 
             cout<<"\n\n Utilizarea ezceptiilor : \n\n";
             try {
@@ -126,20 +129,36 @@ void Start::begin() {
                 std::string t;
                 cin>>t;
                 std::cout<<*Magazin::gasesteProdusulDupaDenumire(t);
-            } catch (const NuAvemAceastaCarte err) {
-                std::cout<<err;
+            } catch (const NuAvemAceastaCarte &err) {
+                std::cout<<err<<std::endl;
             }
 
             try {
-                cout<<"Introduceti indicele caietului pe care doriti sa il cautati \n";
+                std::cout << "Introduceti pretul produsului pe care doriti sa il cautati \n";
                 int m;
-                cin>>m;
-                std::cout<<*Magazin::gasesteCaietulDupaIndice(m);
-            } catch(const NuAvemAcestCaiet err2) {
-                std::cout<<err2;
-            } catch(const AiciAvemOCarte err3) {
-                std::cout<<err3;
+                cin >> m;
+                for(auto &Produs :Magazin::gasesteProdusulDupaPret(m)) {
+                    std::cout<<*Produs;
+                }
             }
+            catch(const NuAFostGasit &err2) {
+                std::cout<<err2;
+            }
+
+               // std::cout<<*Magazin::gasesteCaietulDupaIndice(m);
+         /*   } catch(const NuAvemAcestCaiet &err2) {
+                std::cout<<err2;
+            } catch(const NuAFostGasit &err3) {
+                std::cout<<err3;
+            } */
+
+
+            break;
         }
-    };
+
+        default:{
+            std::cout<<"Nu a fost apasata o tasta corespunzatoare!";
+            break;
+        }
+    }
 }

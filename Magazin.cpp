@@ -1,7 +1,7 @@
 #include "Magazin.h"
 #include "NuAvemAceastaCarte.h"
 #include "NuAvemAcestCaiet.h"
-#include "AiciAvemOCarte.h"
+#include "NuAFostGasit.h"
 #include "DepasesteLimitele.h"
 #include "NuEsteTipulPotrivit.h"
 #include<vector>
@@ -39,9 +39,10 @@ std::vector<std::shared_ptr<Carte>> Magazin::gasesteToateCartile() {
     std::vector<std::shared_ptr<Carte>> carti;
 
     for(auto &prod : Magazin::produse) {
-        if(typeid(*prod) == typeid(Carte)) {
-            auto carte = std::dynamic_pointer_cast<Carte>(prod);
-            carti.push_back(carte);
+        auto &prod_ref = *prod;
+        if(typeid(prod_ref) == typeid(Carte)) {
+            auto carte_rez = std::dynamic_pointer_cast<Carte>(prod);
+            carti.push_back(carte_rez);
         }
     }
     return carti;
@@ -56,16 +57,17 @@ std::shared_ptr<Produs> Magazin::gasesteProdusulDupaDenumire(const std::string& 
         throw NuAvemAceastaCarte();
 }
 
-std::shared_ptr<Produs> Magazin::gasesteCaietulDupaIndice(int poz) {
-    int k = -1;
-    for(auto &prod :Magazin::produse) {
-        k++;
-        if (k == poz && typeid(*prod) == typeid(Caiet)) {
-            return prod;
-        } else if (k == poz && typeid(*prod) == typeid(Carte)) {
-            throw NuEsteTipulPotrivit(typeid(Caiet).name(),typeid(*prod).name());
-        } else {
-            throw DepasesteLimitele();
+int Magazin::GetSize() {
+    return produse.size();
+}
+
+std::vector<std::shared_ptr<Produs>> Magazin :: gasesteProdusulDupaPret(int &poz) {
+    std::vector<std::shared_ptr<Produs>> rezultate;
+    for(auto &produs : Magazin::produse) {
+        if (produs->getPret() == poz) {
+            rezultate.push_back(produs);
         }
     }
+        if (!rezultate.empty()) return rezultate;
+        throw NuAFostGasit();
 }

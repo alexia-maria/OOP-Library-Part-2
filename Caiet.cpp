@@ -33,7 +33,7 @@ void Caiet::reducere() const{
 
 Caiet::Caiet(const Caiet& rhs) : Produs(rhs.getDenumire(), rhs.getPret()), tip(rhs.tip){
 
-};
+}
 
 Caiet &Caiet::operator=(Caiet rhs){
     Produs::operator=(rhs);
