@@ -3,20 +3,15 @@
 #include<iostream>
 #include <string>
 #include <vector>
-#include <map>
-#include <memory>
 
-Caiet::Caiet(const std::string &denumire, int pret, const std::string &tip) : Produs(denumire, pret), tip(tip) {}
+Caiet::Caiet(std::string denumire, int pret, std::string tip) :Produs(denumire, pret), tip(std::move(tip)){}
 
-/*Caiet::Caiet(const std::string &den, int p, const std::string &t) : Produs(den, p) {
-    this->tip = t;
-}*/
 const std::string &Caiet::getTip() const {
     return tip;
 }
 
-void Caiet::setTip(std::string tip) {
-    Caiet::tip = std::move(tip);
+void Caiet::setTip(std::string tip_) {
+    Caiet::tip = std::move(tip_);
 }
 
 void Caiet::prezentareaProdusului() {
@@ -29,8 +24,6 @@ void Caiet::reducere() const{
     std::cout<<"Caietul este la reducere\n";
 }
 
-//Caiet::~Caiet() = default;
-
 Caiet::Caiet(const Caiet& rhs) : Produs(rhs.getDenumire(), rhs.getPret()), tip(rhs.tip){
 
 }
@@ -38,7 +31,6 @@ Caiet::Caiet(const Caiet& rhs) : Produs(rhs.getDenumire(), rhs.getPret()), tip(r
 Caiet &Caiet::operator=(Caiet rhs){
     Produs::operator=(rhs);
     std::swap(tip, rhs.tip);
-
     return *this;
 }
 

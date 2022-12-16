@@ -6,9 +6,7 @@
 #include<iostream>
 #include<memory>
 #include "IOStream.h"
-/*class Produs;
-static std::ostream & operator << (std::ostream &out, Produs &prod);\
-*/
+
 class Produs : public IOStream{
 protected:
     std::string denumire;
@@ -19,11 +17,9 @@ public:
 
     Produs() = default;
 
-    //Produs(const std::string &den, int p);
-
     const std::string &getDenumire() const;
 
-    void setDenumire(const std::string &denumire);
+    void setDenumire(std::string &denumire);
 
     int getPret() const;
 
@@ -34,8 +30,6 @@ public:
     virtual ~Produs();
 
     virtual void  reducere() const = 0;
-
-    //void anuntReducere() const;
 
     Produs(const Produs &rhs);
 

@@ -10,6 +10,7 @@ protected:
 
     friend std::ostream& operator<<(std::ostream &, const IOStream&);
 
+
     virtual ~IOStream();
 };
 #endif //UNTITLED1_IOSTREAM_H

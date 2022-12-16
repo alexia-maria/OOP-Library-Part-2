@@ -25,7 +25,5 @@ public:
     static std::shared_ptr<Produs> gasesteProdusulDupaDenumire(const std::string& denumire);
 
     static std::vector<std::shared_ptr<Produs>> gasesteProdusulDupaPret(int &poz);
-
-    static int GetSize();
 };
 #endif //UNTITLED1_MAGAZIN_H

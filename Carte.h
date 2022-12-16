@@ -11,11 +11,9 @@ class Carte : public Produs {
 public :
     Carte(const std::string &denumire, int pret, std::string gen);
 
-    //Carte(const std::string &den, int p, const std::string &g);
-
     const std::string &getGen() const;
 
-    [[maybe_unused]] void setGen(const std::string &gen);
+    [[maybe_unused]] void setGen(std::string gen);
 
     void prezentareaProdusului() override;
 

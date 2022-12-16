@@ -1,19 +1,15 @@
-//
-// Created by Alexia on 12/7/2022.
-//
 
-#ifndef UNTITLED1_NUAVEMACEASTACARTE_H
-#define UNTITLED1_NUAVEMACEASTACARTE_H
+#ifndef OOP_NUAVEMACEASTACARTE_H
+#define OOP_NUAVEMACEASTACARTE_H
 
+#include<iostream>
 #include "IOStream.h"
-
 class NuAvemAceastaCarte : public std::exception, public IOStream {
 public:
     NuAvemAceastaCarte() = default;
 
-    const char* what() const noexcept override;
+    [[nodiscard]] const char* what() const noexcept override;
 
-    void Print(std::ostream&) const;
+    void Print(std::ostream&) const override;
 };
-
-#endif //UNTITLED1_NUAVEMACEASTACARTE_H
+#endif //OOP_NUAVEMACEASTACARTE_H

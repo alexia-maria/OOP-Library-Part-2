@@ -10,9 +10,7 @@ class Caiet : public Produs {
     std::string tip;
 
 public:
-    Caiet(const std::string &denumire, int pret, const std::string &tip);
-
-    //Caiet(const std::string &den, int p, const std::string &t);
+    Caiet(std::string denumire, int pret, std::string tip);
 
     const std::string &getTip() const;
 

@@ -7,10 +7,8 @@ using namespace std;
 #include "Caiet.h"
 #include "Magazin.h"
 #include "Start.h"
-#include "NuAvemAceastaCarte.h"
-#include "NuAvemAcestCaiet.h"
 #include "NuAFostGasit.h"
-#include "DepasesteLimitele.h"
+#include "NuAvemAceastaCarte.h"
 #include "IOStream.h"
 
 void Start::begin() {
@@ -20,7 +18,7 @@ void Start::begin() {
     cout<<"Pentru apelarea constructorului din clasa de baza, apasati tasta 2\n";
     cout<<"Pentru suprascrierea constructorului de copiere, apasati tasta 3\n";
     cout<<"Pentru suprascriere operatorului =, apasati tasta 4\n";
-    cout<<"Pentru citirea, memorarea si afisarea informatiilor a n obiecte, dar si utilizarea dynamic_cast, apasati tasta 5\n";
+    cout<<"Pentru citirea, memorarea si afisarea informatiilor a n obiecte, utilizarea dynamic_cast si a exceptiilor, apasati tasta 5\n";
 
     int tasta;
     cin>>tasta;
@@ -62,7 +60,7 @@ void Start::begin() {
             Carte d = b;
             c.prezentareaProdusului();
             d.prezentareaProdusului();
-            [[fallthrough]];
+            break;
         }
 
         case 5 : {
@@ -122,7 +120,6 @@ void Start::begin() {
                 x->prezentareaProdusului();
             }
 
-
             cout<<"\n\n Utilizarea ezceptiilor : \n\n";
             try {
                 std::cout<<"Introduceti denumirea cartii pe care vreti sa il cautati \n";
@@ -144,18 +141,8 @@ void Start::begin() {
             catch(const NuAFostGasit &err2) {
                 std::cout<<err2;
             }
-
-               // std::cout<<*Magazin::gasesteCaietulDupaIndice(m);
-         /*   } catch(const NuAvemAcestCaiet &err2) {
-                std::cout<<err2;
-            } catch(const NuAFostGasit &err3) {
-                std::cout<<err3;
-            } */
-
-
             break;
         }
-
         default:{
             std::cout<<"Nu a fost apasata o tasta corespunzatoare!";
             break;

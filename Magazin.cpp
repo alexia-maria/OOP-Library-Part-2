@@ -1,18 +1,11 @@
 #include "Magazin.h"
 #include "NuAvemAceastaCarte.h"
-#include "NuAvemAcestCaiet.h"
 #include "NuAFostGasit.h"
-#include "DepasesteLimitele.h"
-#include "NuEsteTipulPotrivit.h"
 #include<vector>
 #include<memory>
 #include "Caiet.h"
 
 std::vector<std::shared_ptr<Produs>> Magazin::produse;
-//std::vector<Carte> Magazin::carti;
-//std::shared_ptr<Produs> prod(new Produs());
-//vectorul static pets de tipul pointer la Pet
-
 
 void Magazin::adaugaProduse(const std::shared_ptr<Produs> &prod) {
     Magazin::produse.push_back(prod);
@@ -55,10 +48,6 @@ std::shared_ptr<Produs> Magazin::gasesteProdusulDupaDenumire(const std::string& 
         }
     }
         throw NuAvemAceastaCarte();
-}
-
-int Magazin::GetSize() {
-    return produse.size();
 }
 
 std::vector<std::shared_ptr<Produs>> Magazin :: gasesteProdusulDupaPret(int &poz) {
